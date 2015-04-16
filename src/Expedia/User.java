@@ -75,10 +75,14 @@ public class User {
 	    book(bookings);
 	    for(Booking booking : bookings)
 	    {
+	    	int milesToAdd=booking.getMiles()*2;
 	        if (booking.getMiles() > 5000)
 	        {
 	            // flight rules say you can't earn more than 5000 double miles for each flight
 	            bonusFrequentFlierMiles += 5000;
+	        }
+	        else{
+	        	bonusFrequentFlierMiles+=milesToAdd;
 	        }
 	    }
 	}
