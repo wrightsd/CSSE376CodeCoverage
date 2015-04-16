@@ -3,12 +3,14 @@ package ExpediaTest;
 import static org.junit.Assert.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import Expedia.*;
 
+import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -91,6 +93,21 @@ public class FlightTest {
 		target.Database = mockDatabase;
 		Assert.AreEqual(50, target.NumberOfPassengers);
 	}*/
+	
+	@Test
+	public void TestNumberOfPassengers(){
+		IDatabase mockDatabase=EasyMock.createMock(IDatabase.class);
+		List<String> newPassengers=new ArrayList<String>();
+		newPassengers.add("FISH");
+		newPassengers.add("I LIke Cheese!");
+		mockDatabase.Passengers=newPassengers;
+		EasyMock.replay(mockDatabase);
+		Flight newFlight=new Flight(StartDate, EndDate, 0);
+		newFlight.Database=mockDatabase;
+		assertEquals(newFlight.NumberOfPassengers(),newPassengers.size());
+		
+		
+	}
 	
 	@After
 	public void TearDown()

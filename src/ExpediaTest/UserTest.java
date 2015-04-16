@@ -99,8 +99,9 @@ public class UserTest
 		target.bookWithDoubleMiles(new Booking[]{flight});
 		Assert.assertEquals(5000, target.bonusFrequentFlierMiles, 0.01);
 		Flight nextFlight = new Flight(StartDate, EndDate, 1000);
-		target.bookWithDoubleMiles(new Booking[]{nextFlight});
-		Assert.assertEquals(2000,target.bonusFrequentFlierMiles,0.01);
+		User newUser=new User("MINE");
+		newUser.bookWithDoubleMiles(new Booking[]{nextFlight});
+		Assert.assertEquals(2000,newUser.bonusFrequentFlierMiles,0.01);
 	}
 	
 	@Test
